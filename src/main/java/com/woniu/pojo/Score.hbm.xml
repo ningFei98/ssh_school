@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2019-12-18 21:41:06 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="school" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.woniu.pojo.Score" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="score">
+        <id name="scoreId" type="java.lang.Integer">
+            <column name="score_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="com.woniu.pojo.Student" embed-xml="true" fetch="select" insert="true" name="student" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="student_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="scoreNum" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="score_num" precision="22" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="scoreDate" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="score_date"/>
+        </property>
+    </class>
+</hibernate-mapping>

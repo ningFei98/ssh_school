@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2019-12-18 21:41:06 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="school" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.woniu.pojo.Clazz" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="clazz">
+        <id name="clazzId" type="java.lang.Integer">
+            <column name="clazz_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="com.woniu.pojo.Overman" embed-xml="true" fetch="select" insert="true" name="overman" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="overman_id"/>
+        </many-to-one>
+        <many-to-one class="com.woniu.pojo.Stage" embed-xml="true" fetch="select" insert="true" name="stage" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="stage_id"/>
+        </many-to-one>
+        <many-to-one class="com.woniu.pojo.Teacher" embed-xml="true" fetch="select" insert="true" name="teacher" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="teacher_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="clazzName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="clazz_name"/>
+        </property>
+        <property generated="never" lazy="false" name="clazzType" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="clazz_type"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="students" optimistic-lock="true" sort="unsorted" table="student">
+            <key on-delete="noaction">
+                <column name="clazz_id"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.Student" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

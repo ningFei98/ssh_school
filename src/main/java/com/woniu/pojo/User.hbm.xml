@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2019-12-18 21:41:06 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="school" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.woniu.pojo.User" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="user">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="com.woniu.pojo.Overman" embed-xml="true" fetch="select" insert="true" name="overman" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="overman_id"/>
+        </many-to-one>
+        <many-to-one class="com.woniu.pojo.Student" embed-xml="true" fetch="select" insert="true" name="student" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="student_id"/>
+        </many-to-one>
+        <many-to-one class="com.woniu.pojo.Teacher" embed-xml="true" fetch="select" insert="true" name="teacher" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="teacher_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="userName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="user_name"/>
+        </property>
+        <property generated="never" lazy="false" name="userPwd" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="user_pwd"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="relationship1s" optimistic-lock="true" sort="unsorted" table="relationship_1">
+            <key on-delete="noaction">
+                <column name="user_id" not-null="true"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.Relationship1" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="students" optimistic-lock="true" sort="unsorted" table="student">
+            <key on-delete="noaction">
+                <column name="user_id"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.Student" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="overmans" optimistic-lock="true" sort="unsorted" table="overman">
+            <key on-delete="noaction">
+                <column name="user_id"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.Overman" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="teachers" optimistic-lock="true" sort="unsorted" table="teacher">
+            <key on-delete="noaction">
+                <column name="user_id"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.Teacher" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2019-12-18 21:41:06 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="school" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.woniu.pojo.Stage" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="stage">
+        <id name="stageId" type="java.lang.Integer">
+            <column name="stage_id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="stageName" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="stage_name"/>
+        </property>
+        <property generated="never" lazy="false" name="stageWeek" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="stage_week"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="clazzs" optimistic-lock="true" sort="unsorted" table="clazz">
+            <key on-delete="noaction">
+                <column name="stage_id"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.Clazz" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

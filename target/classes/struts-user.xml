@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="action" extends="struts-default">
+		<action name="login" class="com.woniu.action.UserAction" method="login">
+			<result name="no" type="redirect">/userLogin.jsp</result>
+			<result name="admin" type="redirect">/admin.jsp</result>
+			<result name="overman" type="redirect">/overman.jsp</result>
+			<result name="teacher" type="redirect">/teacher.jsp</result>
+			<result name="student" type="redirect">/student.jsp</result>
+		</action>
+		<action name="exit" class="com.woniu.action.UserAction" method="exit">
+			<result name="exit" type="redirect">/userLogin.jsp</result>
+		</action>
+	</package>
+</struts>
+    
