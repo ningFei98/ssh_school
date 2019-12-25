@@ -24,6 +24,13 @@ public class UserDAOImpl implements IUserDAO {
 		return user;
 	}
 
+
+	@Override
+	public void save(User user) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(user);
+	}
+
 	
 
 }

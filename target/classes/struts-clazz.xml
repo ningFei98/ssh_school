@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="clazz" extends="struts-default" >
+		<action name="findClazz" class="com.woniu.action.ClazzAction" method="findClazz">
+			<result >/overClassInfo.jsp</result>
+		</action>
+		<action name="findStudengtByClazzId" class="com.woniu.action.ClazzAction" method="findStudengtByClazzId">
+			<result >/overShowStudentInfo.jsp</result>
+		</action>
+		<action name="overAddStudent" class="com.woniu.action.ClazzAction" method="findClazz">
+			<result >/overInfoAdd.jsp</result>
+		</action>
+		<action name="findAllClazz" class="com.woniu.action.ClazzAction" method="findAllClazz">
+			<result >/overUpdStudentClazz.jsp</result>
+		</action>
+		<action name="overBatchAddStudentView" class="com.woniu.action.ClazzAction" method="findClazz">
+			<result >/overBatchAddStudent.jsp</result>
+		</action>
+	</package>
+</struts>
+    

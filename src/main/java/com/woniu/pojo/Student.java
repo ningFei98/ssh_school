@@ -168,4 +168,14 @@ public class Student implements java.io.Serializable {
 		this.users = users;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [studentId=" + studentId + ", clazz=" + clazz.getClazzId() + ", studentName=" + studentName
+				+ ", sutdentCode=" + sutdentCode + ", studentSex=" + studentSex + ", studentPhone=" + studentPhone
+				+ ", studentAddress=" + studentAddress + ", studentEdu=" + studentEdu + ", studentCollege="
+				+ studentCollege + ", studentProfessional=" + studentProfessional + ", studentGraduateTime="
+				+ studentGraduateTime + "]";
+	}
+	
+
 }

@@ -41,6 +41,7 @@ public class UserAction extends ActionSupport{
 	public String login(){
 		user = us.login(user);
 		if(user!=null){
+			System.out.println("登录后" + user);
 			//将用户信息放入session
 			ActionContext ac = ActionContext.getContext();
 			Map<String, Object> session = ac.getSession();

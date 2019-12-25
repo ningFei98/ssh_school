@@ -3,8 +3,8 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="action" extends="struts-default">
-		<action name="login" class="com.woniu.action.UserAction" method="login">
+	<package name="user" extends="struts-default">
+		<action name="login" class="userAction" method="login">
 			<result name="no" type="redirect">/userLogin.jsp</result>
 			<result name="admin" type="redirect">/admin.jsp</result>
 			<result name="overman" type="redirect">/overman.jsp</result>

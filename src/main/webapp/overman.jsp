@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -56,8 +55,7 @@
 					    	<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 					      		<div class="panel-body">
 					        		<ul>
-							        	<li><a href="#" target="ifs">班级考勤</a></li>
-							        	<li><a href="#" target="ifs">班级信息</a></li>
+							        	<li><a href="findClazz.action" target="ifs">班级信息</a></li>
 					        		</ul>
 					      		</div>
 					   		</div>
@@ -66,8 +64,7 @@
 				</div>
 				
 				<div id="right" class="col-lg-9">
-						<iframe name="ifs" style="width:100%;height:100%" ></iframe>
-					
+						<iframe src="findClazz.action" name="ifs" style="width:100%;height:100%" ></iframe>
 				</div>
 			
 			
@@ -81,5 +78,11 @@
 	</div>
 	<script type="text/javascript" src="Refer/js/jquery-1.12.3.min.js"></script>
  	<script type="text/javascript" src="Refer/js/bootstrap.min.js"></script>
+<!--  	<script type="text/javascript">
+ 		function load() {
+ 			location.href="findClazz.action";
+		}
+ 		load();
+ 	</script> -->
 </body>
 </html>

@@ -66,7 +66,11 @@ public class Teacher implements java.io.Serializable {
 	}
 
 
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Teacher [teacherId=" + teacherId + ", user=" + user.getUserId() + ", teacherName=" + teacherName + "]";
+	}
 
 }

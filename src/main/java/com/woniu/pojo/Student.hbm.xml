@@ -6,10 +6,10 @@
             <column name="student_id"/>
             <generator class="identity"/>
         </id>
-        <many-to-one class="com.woniu.pojo.Clazz" embed-xml="true" fetch="select" insert="true" name="clazz" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="com.woniu.pojo.Clazz" lazy="false" embed-xml="true" fetch="select" insert="true" name="clazz" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column name="clazz_id"/>
         </many-to-one>
-        <many-to-one class="com.woniu.pojo.User" embed-xml="true" fetch="select" insert="true" name="user" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="com.woniu.pojo.User" lazy="false" embed-xml="true" fetch="select" insert="true" name="user" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column name="user_id"/>
         </many-to-one>
         <property generated="never" lazy="false" name="studentName" optimistic-lock="true" type="string" unique="false">
@@ -39,19 +39,19 @@
         <property generated="never" lazy="false" name="studentGraduateTime" optimistic-lock="true" type="date" unique="false">
             <column length="10" name="student_graduateTime"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="checkins" optimistic-lock="true" sort="unsorted" table="checkin">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="checkins" optimistic-lock="true" sort="unsorted" table="checkin">
             <key on-delete="noaction">
                 <column name="student_id"/>
             </key>
             <one-to-many class="com.woniu.pojo.Checkin" embed-xml="true" not-found="exception"/>
         </set>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="scores" optimistic-lock="true" sort="unsorted" table="score">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="scores" optimistic-lock="true" sort="unsorted" table="score">
             <key on-delete="noaction">
                 <column name="student_id"/>
             </key>
             <one-to-many class="com.woniu.pojo.Score" embed-xml="true" not-found="exception"/>
         </set>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="users" optimistic-lock="true" sort="unsorted" table="user">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="users" optimistic-lock="true" sort="unsorted" table="user">
             <key on-delete="noaction">
                 <column name="student_id"/>
             </key>
