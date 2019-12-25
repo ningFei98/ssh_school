@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<package name="student" extends="struts-default">
+			<action name="getSt" class="com.woniu.action.StudentAction" method="getSt">
+				<result name="seccess">/stuInfo.jsp</result>
+			</action>
+			<action name="getC" class="com.woniu.action.StudentAction" method="getC">
+				<result name="seccess">/stuCheck.jsp</result>
+			</action>
+			<action name="getS" class="com.woniu.action.StudentAction" method="getS">
+				<result name="seccess">/stuScore.jsp</result>
+			</action>
+			
+		</package>
+	</struts>

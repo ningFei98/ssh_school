@@ -1,0 +1,11 @@
+package com.woniu.dao;
+
+import com.woniu.pojo.Checkin;
+import com.woniu.pojo.Score;
+import com.woniu.pojo.Student;
+
+public interface IStudentDAO {
+	Student findStu(int i);
+	Checkin findC(int i);
+	Score findS(int i);
+}
