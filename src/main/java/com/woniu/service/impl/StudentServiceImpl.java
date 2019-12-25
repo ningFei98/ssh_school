@@ -16,6 +16,7 @@ import com.woniu.pojo.Checkintype;
 import com.woniu.pojo.Clazz;
 import com.woniu.pojo.Relationship1;
 import com.woniu.pojo.Role;
+import com.woniu.pojo.Score;
 import com.woniu.pojo.Student;
 import com.woniu.pojo.User;
 import com.woniu.service.IStudentService;
@@ -98,6 +99,22 @@ public class StudentServiceImpl implements IStudentService {
 		sd.overUpdStudent(student);
 	}
 
-	
+	//stu
+	@Override
+	public Student findStu(int i) {
+		// TODO Auto-generated method stub
+		return sd.findStu(i);
+	}
 
+	@Override
+	public Checkin findC(int i) {
+		// TODO Auto-generated method stub
+		return sd.findC(i);
+	}
+
+	@Override
+	public Score findS(int i) {
+		// TODO Auto-generated method stub
+		return sd.findS(i);
+	}
 }

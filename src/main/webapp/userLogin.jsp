@@ -50,5 +50,6 @@
 				<input style="width:60px" type="reset" class="btn btn-info " value="重置" />
 			</div>
 		</form>
+		
 </body>
 </html>

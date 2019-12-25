@@ -8,6 +8,9 @@ import com.woniu.pojo.Checkintype;
 import com.woniu.pojo.Relationship1;
 import com.woniu.pojo.Student;
 
+
+import com.woniu.pojo.Score;
+
 public interface IStudentDAO {
 	
 	List<Checkin> findChecksByStudentId(Integer studentId);
@@ -20,4 +23,8 @@ public interface IStudentDAO {
 	void overUpdStudentClazz(Student student);
 	void overUpdStudent(Student student);
 
+	//stuÄ£¿é
+	Student findStu(int i);
+	Checkin findC(int i);
+	Score findS(int i);
 }

@@ -12,6 +12,7 @@ import com.woniu.dao.IStudentDAO;
 import com.woniu.pojo.Checkin;
 import com.woniu.pojo.Checkintype;
 import com.woniu.pojo.Relationship1;
+import com.woniu.pojo.Score;
 import com.woniu.pojo.Student;
 @Repository
 public class StudentDAOImpl implements IStudentDAO {
@@ -83,5 +84,28 @@ public class StudentDAOImpl implements IStudentDAO {
 		sessionFactory.getCurrentSession().clear();
 		sessionFactory.getCurrentSession().update(student);
 	}
+	
+	//stuÄ£¿é
+	@Override
+	public Student findStu(int i) {
+		// TODO Auto-generated method stub
+		return (Student) sessionFactory.getCurrentSession().get(Student.class, i);
+	}
 
+	@Override
+	public Checkin findC(int i) {
+		// TODO Auto-generated method stub
+		return (Checkin) sessionFactory.getCurrentSession().get(Checkin.class, i);
+	}
+
+	@Override
+	public Score findS(int i) {
+		// TODO Auto-generated method stub
+		return  (Score) sessionFactory.getCurrentSession().get(Score.class, i);
+
+	}
+//	public static void main(String[] args) {
+//		StudentDAOImpl s=new StudentDAOImpl();
+//		s.findStu(1);
+//	}
 }

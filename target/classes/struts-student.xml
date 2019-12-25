@@ -3,44 +3,68 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="student" extends="struts-default" >
-		<action name="findChecksByStudentId" class="com.woniu.action.StudentAction" method="findChecksByStudentId">
-			<result >/overShowCheck.jsp</result>
+	<package name="student" extends="struts-default">
+		<action name="findChecksByStudentId"
+			class="com.woniu.action.StudentAction" method="findChecksByStudentId">
+			<result>/overShowCheck.jsp</result>
 		</action>
-		<action name="findAllCheckintype" class="com.woniu.action.StudentAction" method="findAllCheckintype">
-			<result >/overCheckAdd.jsp</result>
+		<action name="findAllCheckintype"
+			class="com.woniu.action.StudentAction" method="findAllCheckintype">
+			<result>/overCheckAdd.jsp</result>
 		</action>
-		<action name="overSaveCheckin" class="com.woniu.action.StudentAction" method="overSaveCheckin">
+		<action name="overSaveCheckin"
+			class="com.woniu.action.StudentAction" method="overSaveCheckin">
 			<result type="chain">
 				<param name="actionName">findChecksByStudentId</param>
 			</result>
 		</action>
-		<action name="overSaveStudent" class="com.woniu.action.StudentAction" method="overSaveStudent">
+		<action name="overSaveStudent"
+			class="com.woniu.action.StudentAction" method="overSaveStudent">
 			<result type="chain">
-			<param name="actionName">findStudengtByClazzId</param>
+				<param name="actionName">findStudengtByClazzId</param>
 			</result>
 		</action>
-		<action name="overGetStudentByStudentId" class="com.woniu.action.StudentAction" method="getStudentByStudentId">
+		<action name="overGetStudentByStudentId"
+			class="com.woniu.action.StudentAction" method="getStudentByStudentId">
 			<result type="chain">
-			<param name="actionName">findAllClazz</param>
+				<param name="actionName">findAllClazz</param>
 			</result>
 		</action>
-		<action name="overUpdStudentClazz" class="com.woniu.action.StudentAction" method="overUpdStudentClazz">
-			<result  type="redirectAction">findClazz</result>
+		<action name="overUpdStudentClazz"
+			class="com.woniu.action.StudentAction" method="overUpdStudentClazz">
+			<result type="redirectAction">findClazz</result>
 		</action>
-		<action name="overUpdStudentView" class="com.woniu.action.StudentAction" method="overUpdStudentView">
-			<result >/overUpdStudent.jsp</result>
+		<action name="overUpdStudentView"
+			class="com.woniu.action.StudentAction" method="overUpdStudentView">
+			<result>/overUpdStudent.jsp</result>
 		</action>
-		<action name="overUpdStudent" class="com.woniu.action.StudentAction" method="overUpdStudent">
+		<action name="overUpdStudent"
+			class="com.woniu.action.StudentAction" method="overUpdStudent">
 			<result type="chain">
-			<param name="actionName">findStudengtByClazzId</param>
+				<param name="actionName">findStudengtByClazzId</param>
 			</result>
 		</action>
-		<action name="overBatchAddStudentSave" class="com.woniu.action.StudentAction" method="overBatchAddStudentSave">
+		<action name="overBatchAddStudentSave"
+			class="com.woniu.action.StudentAction"
+			method="overBatchAddStudentSave">
 			<result type="chain">
-			<param name="actionName">findStudengtByClazzId</param>
+				<param name="actionName">findStudengtByClazzId</param>
 			</result>
+		</action>
+
+		<!-- stu模块 -->
+		<action name="getSt" class="com.woniu.action.StudentAction"
+			method="getSt">
+			<result name="seccess">/stuInfo.jsp</result>
+		</action>
+		<action name="getC" class="com.woniu.action.StudentAction"
+			method="getC">
+			<result name="seccess">/stuCheck.jsp</result>
+		</action>
+		<action name="getS" class="com.woniu.action.StudentAction"
+			method="getS">
+			<result name="seccess">/stuScore.jsp</result>
 		</action>
 	</package>
 </struts>
-    
+

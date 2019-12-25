@@ -30,6 +30,14 @@ public class UserDAOImpl implements IUserDAO {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().save(user);
 	}
+	
+	
+	//stuÄ£¿é
+	@Override
+	public void judge(int in) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().createQuery("from User where user_id="+in);
+	}
 
 	
 

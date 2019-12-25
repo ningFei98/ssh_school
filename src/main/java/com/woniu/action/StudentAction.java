@@ -23,7 +23,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.woniu.pojo.Checkin;
 import com.woniu.pojo.Checkintype;
 import com.woniu.pojo.Clazz;
+import com.woniu.pojo.Score;
 import com.woniu.pojo.Student;
+import com.woniu.pojo.User;
 import com.woniu.povo.StudentCheckintype;
 import com.woniu.service.IStudentService;
 import com.woniu.utils.ExcelUtil;
@@ -249,4 +251,41 @@ public class StudentAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	//stuÄ£¿é
+	private Student stu;
+	private Checkin cin;
+	private Score sc;
+	
+	public Student getStu() {
+		return stu;
+	}
+	public void setStu(Student stu) {
+		this.stu = stu;
+	}
+	public Checkin getCin() {
+		return cin;
+	}
+	public void setCin(Checkin cin) {
+		this.cin = cin;
+	}
+	public Score getSc() {
+		return sc;
+	}
+	public void setSc(Score sc) {
+		this.sc = sc;
+	}
+	public String getSt() {
+	User u=(User) ActionContext.getContext().getSession().get("loginUser");
+	System.out.println(u+"qqqqqqqqqqqqq");
+		stu=ss.findStu(1);
+		return "seccess";
+	}
+	public String getC() {
+		cin=ss.findC(1);
+		return "seccess";
+	}
+	public String getS() {
+		sc=ss.findS(1);
+		return "seccess";
+	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -39,6 +40,7 @@ public class UserAction extends ActionSupport{
 	
 	
 	public String login(){
+		
 		user = us.login(user);
 		if(user!=null){
 			System.out.println("µÇÂ¼ºó" + user);
@@ -47,6 +49,7 @@ public class UserAction extends ActionSupport{
 			Map<String, Object> session = ac.getSession();
 			session.put("loginUser", user);
 			Set<Relationship1> set = user.getRelationship1s();
+			
 			for (Relationship1 r1 : set) {
 				switch (r1.getRole().getRoleId()) {
 				case 1:
@@ -73,5 +76,18 @@ public class UserAction extends ActionSupport{
 		return "exit";
 	}
 	
+	
+	public String change() {
+		User u=(User) ServletActionContext.getRequest().getSession().getAttribute("loginUser");
+		String mi=u.getUserPwd();	
+		System.out.println("¾ÉÃÜÂë"+mi);
+		
+		String newmi=ServletActionContext.getRequest().getParameter("oldPwd");
+		System.out.println("ÐÂÃÜÂë"+newmi);
+		if(mi.equals("newmi")) {
+			return "true";
+		}
+		return "false";
+	}
 
 }

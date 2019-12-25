@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.woniu.pojo.Checkin;
 import com.woniu.pojo.Checkintype;
+import com.woniu.pojo.Score;
 import com.woniu.pojo.Student;
 
 public interface IStudentService {
@@ -15,4 +16,9 @@ public interface IStudentService {
 	void overSaveStudent(Student student);
 	void overUpdStudentClazz(Student student);
 	void overUpdStudent(Student student);
+
+	//stu
+	Student findStu(int i);
+	Checkin findC(int i);
+	Score findS(int i);
 }

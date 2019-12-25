@@ -26,4 +26,17 @@ public class UserServiceImpl implements IUserService {
 		
 		return null;
 	}
+
+
+	@Override
+	public void upd(int in) {
+		// TODO Auto-generated method stub
+		dd.judge(in);
+	}
+
+
+	
+
+
+	
 }
