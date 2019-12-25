@@ -6,4 +6,6 @@ import com.woniu.pojo.User;
 public interface IUserDAO {
 
 	User findOneByUname(String uname);
+
+	void judge(int in);
 }

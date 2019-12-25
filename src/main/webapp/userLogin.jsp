@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+value==1<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -50,5 +50,6 @@
 				<input style="width:60px" type="reset" class="btn btn-info " value="重置" />
 			</div>
 		</form>
+		
 </body>
 </html>

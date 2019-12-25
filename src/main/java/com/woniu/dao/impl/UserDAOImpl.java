@@ -24,6 +24,13 @@ public class UserDAOImpl implements IUserDAO {
 		return user;
 	}
 
+
+	@Override
+	public void judge(int in) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().createQuery("from User where user_id="+in);
+	}
+
 	
 
 }
