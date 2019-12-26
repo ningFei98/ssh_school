@@ -12,7 +12,7 @@
         <property generated="never" lazy="false" name="stageWeek" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="stage_week"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="clazzs" optimistic-lock="true" sort="unsorted" table="clazz">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="clazzs" optimistic-lock="true" sort="unsorted" table="clazz">
             <key on-delete="noaction">
                 <column name="stage_id"/>
             </key>

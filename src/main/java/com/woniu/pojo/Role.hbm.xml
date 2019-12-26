@@ -9,7 +9,7 @@
         <property generated="never" lazy="false" name="roleName" optimistic-lock="true" type="string" unique="false">
             <column length="20" name="role_name"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="relationship1s" optimistic-lock="true" sort="unsorted" table="relationship_1">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="relationship1s" optimistic-lock="true" sort="unsorted" table="relationship_1">
             <key on-delete="noaction">
                 <column name="role_id" not-null="true"/>
             </key>
