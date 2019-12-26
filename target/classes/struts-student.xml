@@ -65,6 +65,13 @@
                 <param name="inputName">excelFile</param> 
             </result>
 		</action>
+		<action name="overDeleteStudentByStudentId"
+			class="com.woniu.action.StudentAction"
+			method="overDeleteStudentByStudentId">
+			<result type="chain">
+				<param name="actionName">findStudengtByClazzId</param>
+			</result>
+		</action>
 
 		<!-- stu模块============================================================== -->
 		<action name="getSt" class="com.woniu.action.StudentAction"

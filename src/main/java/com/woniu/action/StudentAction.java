@@ -230,7 +230,7 @@ public class StudentAction extends ActionSupport{
 	
 	
 	/**
-	 * 
+	 * 批量添加学生信息
 	 * @return
 	 */
 	public String overBatchAddStudentSave(){
@@ -301,6 +301,14 @@ public class StudentAction extends ActionSupport{
 			e.printStackTrace();
 		}
         return "exportExcel";
+	}
+	public String overDeleteStudentByStudentId(){
+		student = ss.getStudentByStudentId(student.getStudentId());
+		clazz = student.getClazz();
+		ss.overDeleteStudentByStudentId(student.getStudentId());
+		ActionContext ac = ActionContext.getContext();
+		ac.put("clazz", clazz);
+		return SUCCESS;
 	}
 	
 	//stu模块===========================================
