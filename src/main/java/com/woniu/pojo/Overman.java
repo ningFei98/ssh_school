@@ -70,5 +70,4 @@ public class Overman implements java.io.Serializable {
 		return "Overman [overmanId=" + overmanId + ", user=" + user.getUserId() + ", overmanName=" + overmanName + "]";
 	}
 
-	
 }

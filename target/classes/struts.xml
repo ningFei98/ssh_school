@@ -6,5 +6,5 @@
 	   	<include file="struts-student.xml"></include>
 	    <include file="struts-user.xml"></include>
 	    <include file="struts-clazz.xml"></include>
-	    <include file="struts-student.xml"></include>
+	    <include file="struts-admin.xml"></include>
 	</struts>

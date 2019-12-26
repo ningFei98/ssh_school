@@ -60,4 +60,9 @@ public class Score implements java.io.Serializable {
 		this.scoreDate = scoreDate;
 	}
 
+	
+
+
+
+	
 }

@@ -90,7 +90,5 @@ public class Clazz implements java.io.Serializable {
 		return "Clazz [clazzId=" + clazzId + ", overman=" + overman.getOvermanId() + ", stage=" + stage.getStageId() + ", teacher=" + teacher.getTeacherId()
 				+ ", clazzName=" + clazzName + ", clazzType=" + clazzType + "]";
 	}
-	
-	
 
 }

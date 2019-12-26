@@ -178,6 +178,7 @@ public class Student implements java.io.Serializable {
 				+ studentCollege + ", studentProfessional=" + studentProfessional + ", studentGraduateTime="
 				+ studentGraduateTime + "]";
 	}
+
 	
 
 }
