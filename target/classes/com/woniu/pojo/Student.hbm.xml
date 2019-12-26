@@ -6,7 +6,7 @@
             <column name="student_id"/>
             <generator class="identity"/>
         </id>
-        <many-to-one class="com.woniu.pojo.Clazz" embed-xml="true" fetch="select" insert="true" name="clazz" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="com.woniu.pojo.Clazz" embed-xml="true" fetch="select" insert="true" name="clazz" not-found="exception" optimistic-lock="true" unique="false" update="true" lazy="false">
             <column name="clazz_id"/>
         </many-to-one>
         <many-to-one class="com.woniu.pojo.User" embed-xml="true" fetch="select" insert="true" name="user" not-found="exception" optimistic-lock="true" unique="false" update="true">

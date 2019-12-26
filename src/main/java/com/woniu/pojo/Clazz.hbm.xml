@@ -9,7 +9,7 @@
         <many-to-one class="com.woniu.pojo.Overman" embed-xml="true" fetch="select" insert="true" name="overman" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column name="overman_id"/>
         </many-to-one>
-        <many-to-one class="com.woniu.pojo.Stage" embed-xml="true" fetch="select" insert="true" name="stage" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="com.woniu.pojo.Stage" embed-xml="true" fetch="select" insert="true" name="stage" not-found="exception" optimistic-lock="true" unique="false" update="true" lazy="false">
             <column name="stage_id"/>
         </many-to-one>
         <many-to-one class="com.woniu.pojo.Teacher" embed-xml="true" fetch="select" insert="true" name="teacher" not-found="exception" optimistic-lock="true" unique="false" update="true">
@@ -21,7 +21,7 @@
         <property generated="never" lazy="false" name="clazzType" optimistic-lock="true" type="string" unique="false">
             <column length="20" name="clazz_type"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="students" optimistic-lock="true" sort="unsorted" table="student">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="students" optimistic-lock="true" sort="unsorted" table="student">
             <key on-delete="noaction">
                 <column name="clazz_id"/>
             </key>

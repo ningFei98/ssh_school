@@ -10,6 +10,12 @@ import java.util.Set;
  */
 public class Student implements java.io.Serializable {
 
+	@Override
+	public String toString() {
+		return "Student [studentId=" + studentId + ", studentName=" + studentName + ", studentSex=" + studentSex
+				+ "]";
+	}
+
 	private Integer studentId;
 	private Clazz clazz;
 	private User user;

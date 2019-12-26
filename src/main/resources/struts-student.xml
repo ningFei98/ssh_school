@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<package name="student" extends="struts-default">
+		<global-results>
+			<result name="score">/teacherClassScore.jsp</result>
+			<result name="findClassScore" type="redirect">/findScoreByClazz.action</result>
+		</global-results>
+			<action name="findScoreByClazz" class="com.woniu.action.StudentAction" method="findScoreByClazz">
+			</action>
+			<action name="findClazzStu" class="com.woniu.action.StudentAction" method="findClazzStu">
+				<result name="scoreAdd">/teacherAddScore.jsp</result>
+			</action>
+			<action name="saveScore" class="com.woniu.action.StudentAction" method="saveScore">
+				
+			</action>
+			<action name="ScoresAdd" class="com.woniu.action.StudentAction" method="ScoresAdd">
+				
+			</action>
+			<action name="showClazzInfo" class="com.woniu.action.StudentAction" method="showClazzInfo">
+				<result name="showClazzInfo">/teacherClassInfo.jsp</result>
+			</action>
+			<action name="showClazzCheckin" class="com.woniu.action.StudentAction" method="showClazzCheckin">
+				<result name="showClazzCheckin">/teacherClassCheckin.jsp</result>
+			</action>
+			<action name="findOneScore" class="com.woniu.action.StudentAction" method="findOneScore">
+				<result name="teacherUpdScoreUI">/teacherUpdScoreUI.jsp</result>
+			</action>
+			<action name="updScore" class="com.woniu.action.StudentAction" method="updScore">
+			</action>
+		</package>
+	</struts>
