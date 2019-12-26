@@ -86,5 +86,10 @@ public class Clazz implements java.io.Serializable {
 	}
 
 
+	@Override
+	public String toString() {
+		return "Clazz [clazzId=" + clazzId + ", clazzName=" + clazzName + ", clazzType=" + clazzType + "]";
+	}
+
 
 }

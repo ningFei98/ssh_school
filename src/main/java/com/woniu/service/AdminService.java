@@ -18,5 +18,7 @@ public interface AdminService {
 		
 		List<CheckOrderBy> findCheck(int a);
 		List<Score> findScoreByClazz(int a);
+		int countCei();
+		int countJ();
 		
 }
