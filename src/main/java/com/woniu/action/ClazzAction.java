@@ -12,18 +12,32 @@ import com.woniu.pojo.Clazz;
 import com.woniu.pojo.Student;
 import com.woniu.pojo.User;
 import com.woniu.service.IClazzService;
+import com.woniu.service.IStudentService;
 
 @SuppressWarnings("serial")
 @Controller
 public class ClazzAction extends ActionSupport{
 	@Autowired
 	private IClazzService cs;
+	@Autowired
+	private IStudentService ss;
 	private List<Clazz> clazzs;
 	private Clazz clazz;
 	private Student student;
+	private List<Student> stuList;
 	
 	
 	
+
+	public List<Student> getStuList() {
+		return stuList;
+	}
+
+
+	public void setStuList(List<Student> stuList) {
+		this.stuList = stuList;
+	}
+
 
 	public Student getStudent() {
 		return student;
@@ -77,7 +91,8 @@ public class ClazzAction extends ActionSupport{
 	 * @return
 	 */
 	public String findStudengtByClazzId(){
-		clazz = cs.findStudengtByClazzId(clazz.getClazzId());
+		stuList = ss.findStuByClazz(clazz);
+		//clazz = cs.findStudengtByClazzId(clazz.getClazzId());
 		return SUCCESS;
 	}
 	/**

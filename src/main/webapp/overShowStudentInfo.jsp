@@ -37,7 +37,7 @@ vertical-align: middle!important;
 			</tr>
 		</thead>
 		<tbody>
-		  	<c:forEach items="${requestScope.clazz.students}" var="s" varStatus="i">
+		  	<c:forEach items="${requestScope.stuList}" var="s" varStatus="i">
 			<tr>
 				<td>${i.count}</td>
 				<td>${s.studentName}</td>
@@ -59,7 +59,7 @@ vertical-align: middle!important;
 		</tbody>
 	</table>
 	<div style="width:90%;margin:20px auto;text-align: right;">
-		<a href="studentExcelWrite.action?clazz.clazzId=${clazz.clazzId }" class="btn btn-info " >导出学生信息表</a>
+		<a href="studentExcelWrite.action?clazz.clazzId=${stuList[0].clazz.clazzId }" class="btn btn-info " >导出学生信息表</a>
 	</div>
   <script type="text/javascript" src="Refer/js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="Refer/js/bootstrap.min.js"></script>
