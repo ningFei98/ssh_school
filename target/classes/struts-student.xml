@@ -96,5 +96,13 @@
 		</action>
 		<action name="updScore" class="com.woniu.action.StudentAction" method="updScore">
 		</action>
+		<action name="ScoreExcelWrite" class="com.woniu.action.StudentAction" method="ScoreExcelWrite">
+			<result name="exportExcel" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>  
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">1024</param>
+                <param name="inputName">excelFile</param> 
+            </result>
+		</action>
 	</package>
 </struts>

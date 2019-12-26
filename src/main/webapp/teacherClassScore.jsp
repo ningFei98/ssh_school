@@ -52,11 +52,14 @@
   		    </c:forEach>
 		</tbody>
 	</table>
+	
 	<div style="width:1000px;margin:0px auto;">
 		<form action="ScoresAdd.action" method="post" enctype="multipart/form-data"> 
 			<input type="file" name="scoreExcel" label="成绩单" style="display: none" id="fileUploader" style="display:none;"/>
-			
 			<div style="width:1000px;margin:0px auto;text-align:right;">
+				<div class="btn btn-primary" onclick="window.location.href='ScoreExcelWrite.action'" style="cursor:pointer;withd:30px;">
+					成绩单导出
+				</div>
 				<div class="btn btn-primary" id="fileBtn" style="cursor:pointer;withd:30px;" onclick="document.getElementById('fileUploader').click();">
 					<span>成绩单导入</span>
 				</div>
