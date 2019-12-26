@@ -29,9 +29,9 @@ public class UserServiceImpl implements IUserService {
 
 
 	@Override
-	public void upd(int in) {
+	public void upd(User u) {
 		// TODO Auto-generated method stub
-		dd.judge(in);
+		dd.upd(u);
 	}
 
 
