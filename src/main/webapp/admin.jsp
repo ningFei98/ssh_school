@@ -69,7 +69,7 @@
 				</div>
 				
 				<div id="right" class="col-lg-9">
-						<iframe name="my" style="width:100%;height:100%" ></iframe>
+						<iframe name="my" style="width:100%;height:100%" src="adminClassInfor.jsp"></iframe>
 					
 				</div>
 			

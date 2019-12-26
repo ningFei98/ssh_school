@@ -41,10 +41,10 @@
 		            </c:forEach>
 		        </select>
 		</div>
-		<div class="col-sm-7">
+		<!-- <div class="col-sm-7">
 		    班级名称<br/>
 		    <input type="text"  class="form-control" name="clazz.clazzName">
-		</div>
+		</div> -->
 		<div class="col-sm-7">    
 		    班级类型<br/>
 		        <select id="type" class="form-control" name="clazz.clazzType"> 

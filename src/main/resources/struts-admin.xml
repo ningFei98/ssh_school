@@ -35,6 +35,10 @@
 		   <result name="success" type="redirect">/userLogin.jsp</result>
 		</action>
 		
+		<!-- 饼状图数据 -->
+		<action name="chart" class="com.woniu.action.AdminAction" method="chart">
+		  <!--  <result name="success" type="redirect">/userLogin.jsp</result> -->
+		</action>
 	</package>
 </struts>
     

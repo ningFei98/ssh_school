@@ -71,5 +71,14 @@ public class AdminDaoImpl implements AdminDao {
 		String str="select * from score where student_id="+studentId;
 		return (List<Score>)sessionFactory.getCurrentSession().createSQLQuery(str).addEntity(Score.class).list();
 	}
+	
+	//≤È—Ø∞‡º∂±Ì
+	@SuppressWarnings("unchecked")
+	public List<Clazz> findClazz(String sql){
+		System.out.println(sql);
+		List<Clazz> list = sessionFactory.getCurrentSession().createSQLQuery(sql).addEntity(Clazz.class).list();
+		System.out.println(list);
+		return list;	
+	}
 
 }

@@ -87,8 +87,8 @@ public class Clazz implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Clazz [clazzId=" + clazzId + ", overman=" + overman.getOvermanId() + ", stage=" + stage.getStageId() + ", teacher=" + teacher.getTeacherId()
-				+ ", clazzName=" + clazzName + ", clazzType=" + clazzType + "]";
+		return "Clazz [clazzId=" + clazzId + ", clazzName=" + clazzName + ", clazzType=" + clazzType + "]";
 	}
+
 
 }

@@ -11,6 +11,7 @@ import com.woniu.pojo.Teacher;
 
 public interface AdminDao {
    List<Clazz> findAll();
+   List<Clazz> findClazz(String str);
    void save(Clazz clazz);
    
    List<Teacher> findAllTeacher();

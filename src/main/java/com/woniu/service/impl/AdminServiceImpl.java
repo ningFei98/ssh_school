@@ -34,11 +34,57 @@ public class AdminServiceImpl implements AdminService {
 //	@Autowired
 //	Stage stage;
 //	@Override
+	List<Clazz> clazz01=new ArrayList<>();
 	public void save(Clazz clazz) {
+		System.out.println("/////////////////////////////////////////////");
 		Stage stage=new Stage();
+		//设置班级阶段
 		stage.setStageId(1);
-//		stage.setStageId(1);
 		clazz.setStage(stage);
+		//设置班级期数，通过查询最后一个班级自动生成新的班级
+		if(clazz.getClazzType().equals("java开发")) {  //如果是开发班级
+			System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+			//查询出最后一级的开发班或者测试班
+			String str="select * from clazz where clazz_type='java开发'  order by clazz_id desc limit 0,1";
+			List<Clazz> clazz01=adminDao.findClazz(str);
+            if(clazz01.size()==0) {
+            	clazz.setClazzName("1期");
+            }else {
+            	Clazz clazzOne = clazz01.get(0);
+    			//得到新班级名称
+    			String name=clazzOne.getClazzName();    //获得最后一个班级名称
+    			int index=name.indexOf("期");            //获取“期”这个字的下标
+    			String name01=name.substring(0, index); //通过下标截取字符前面的int数字
+    			int name02=Integer.parseInt(name01)+1;  
+    			String newName=name02+"期";
+    			System.out.println("新的班级名字为："+newName);
+    			clazz.setClazzName(newName);
+                 }
+			
+		} 
+				
+		if(clazz.getClazzType().equals("测试开发")) {  //如果是测试班级
+			System.out.println("tttttttttttttttttttttttttttttttttttttttttttttt");
+			//查询出最后一级的开发班或者测试班
+			String str="select * from clazz where clazz_type='测试开发'  order by clazz_id desc limit 0,1";
+			//List<Clazz> clazz01=new ArrayList<>();
+			List<Clazz> clazz01=adminDao.findClazz(str);
+			 if(clazz01.size()==0) {
+	            	clazz.setClazzName("1期");
+	            }else {
+	            	Clazz clazzOne = clazz01.get(0);
+	    			//得到新班级名称
+	    			String name=clazzOne.getClazzName();    //获得最后一个班级名称
+	    			int index=name.indexOf("期");            //获取“期”这个字的下标
+	    			String name01=name.substring(0, index); //通过下标截取字符前面的int数字
+	    			int name02=Integer.parseInt(name01)+1;  
+	    			String newName=name02+"期";
+	    			System.out.println("新的班级名字为："+newName);
+	    			clazz.setClazzName(newName);
+	                 }
+		      }
+		System.out.println(clazz);
+		//保存班级信息
         adminDao.save(clazz);
 	}
 
@@ -87,7 +133,6 @@ public class AdminServiceImpl implements AdminService {
 				if(checkin.getCheckintype().getCheckInTypeName().equals("正常")) {
 					a4++;
 				}
-                
 			}
 			or.setChidao(a1);
 			or.setKuangke(a2);
@@ -113,6 +158,23 @@ public class AdminServiceImpl implements AdminService {
 					}
 			}
 		return scores;
+	}
+
+	//获得测试班级数量
+	@Override
+	public int countCei() {
+		String str="select * from clazz where clazz_type='测试开发'";
+		List<Clazz> a=adminDao.findClazz(str);
+		int num=a.size();
+		return num;
+	}
+	//开发班级数量
+	@Override
+	public int countJ() {
+		String str="select * from clazz where clazz_type='java开发'";
+		List<Clazz> a=adminDao.findClazz(str);
+		int num=a.size();
+		return num;
 	}
 
 }

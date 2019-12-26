@@ -1,13 +1,18 @@
 package com.woniu.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opensymphony.xwork2.ActionContext;
+import com.woniu.pojo.Chart;
 import com.woniu.pojo.CheckOrderBy;
 import com.woniu.pojo.Checkin;
 import com.woniu.pojo.Clazz;
@@ -146,5 +151,32 @@ import com.woniu.service.AdminService;
 			 Map<String, Object> session = ac.getSession();
 			 session.remove("loginUser");
 			return "success";	
+		}
+		
+		
+		//饼状图数据
+		public void chart() {
+			System.out.println("饼状图数据");
+			//获得测试班级的数量
+			int countCei =adminService.countCei();
+			//获得开发班级的数量
+			int countJ=adminService.countJ();
+			//数据封装
+			Chart ch=new Chart();
+			ch.setCountC(countCei);
+			ch.setCountJ(countJ);
+		    //数据发送
+			try {
+				PrintWriter out=ServletActionContext.getResponse().getWriter();
+				//将对象转换成json对象
+				ObjectMapper obj = new ObjectMapper();
+				String str01=obj.writeValueAsString(ch);
+				out.print(str01);
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 }
