@@ -8,5 +8,5 @@ public interface IUserService {
 
 	
 
-	void upd(int in);
+	void upd(User u);
 }

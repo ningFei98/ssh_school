@@ -15,10 +15,11 @@
 			<result name="exit" type="redirect">/userLogin.jsp</result>
 		</action>
 		<action name="change" class="com.woniu.action.UserAction" method="change">
-			<result name="true" type="redirect">/updpwd.jsp</result>
-			<result name="false" type="redirect">/updpwd.jsp</result>
+			
 		</action>
-		
+		<action name="upd" class="com.woniu.action.UserAction" method="upd">
+			<result name="ok" type="redirect">/userLogin.jsp</result>
+		</action>
 	</package>
 </struts>
     

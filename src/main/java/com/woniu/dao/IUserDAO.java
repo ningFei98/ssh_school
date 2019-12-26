@@ -10,4 +10,5 @@ public interface IUserDAO {
 	void save(User user);
 //studentÄ£¿éµÄ
 	void judge(int in);
+	void upd(User u);
 }

@@ -1,5 +1,7 @@
 package com.woniu.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -77,17 +79,40 @@ public class UserAction extends ActionSupport{
 	}
 	
 	
-	public String change() {
+	public void change(){
 		User u=(User) ServletActionContext.getRequest().getSession().getAttribute("loginUser");
-		String mi=u.getUserPwd();	
-		System.out.println("æ…√‹¬Î"+mi);
+		String oldpwd=u.getUserPwd();	
+		System.out.println("æ…√‹¬Î"+oldpwd);
 		
-		String newmi=ServletActionContext.getRequest().getParameter("oldPwd");
-		System.out.println("–¬√‹¬Î"+newmi);
-		if(mi.equals("newmi")) {
-			return "true";
+		String affpwd=ServletActionContext.getRequest().getParameter("oldPwd");
+		System.out.println("–¬√‹¬Î"+affpwd);
+		PrintWriter out = null;
+		try {
+			out = ServletActionContext.getResponse().getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return "false";
+		
+		
+		if(oldpwd.equals(affpwd)) {
+			out.print(true);
+					
+		}else {
+			out.print(false);
+		}
+		out.flush();
+		out.close();
 	}
+	
+	public String upd() {
+		User u=(User) ServletActionContext.getRequest().getSession().getAttribute("loginUser");
+//		System.out.println(u);
+		String newpwd=ServletActionContext.getRequest().getParameter("newPwd");
+		u.setUserPwd(newpwd);
+		us.upd(u);
+		return "ok";
+		
+	} 
 
 }
