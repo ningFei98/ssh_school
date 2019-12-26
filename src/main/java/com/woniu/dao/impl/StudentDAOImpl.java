@@ -18,6 +18,7 @@ import com.woniu.pojo.Student;
 @Repository
 public class StudentDAOImpl implements IStudentDAO {
 	
+	//overmanÄ£¿é=========================
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -86,6 +87,14 @@ public class StudentDAOImpl implements IStudentDAO {
 		sessionFactory.getCurrentSession().update(student);
 	}
 	
+	@Override
+	public void overDeleteStudentByStudentId(Integer studentId) {
+		// TODO Auto-generated method stub
+		Student student = new Student();
+		student.setStudentId(studentId);
+		sessionFactory.getCurrentSession().delete(student);
+	}
+	
 	//stuÄ£¿é
 	@Override
 	public Student findStu(int i) {
@@ -116,6 +125,6 @@ public class StudentDAOImpl implements IStudentDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Student where clazz_id ="+clazz.getClazzId());
 		return query.list();
 	}
-	
+
 
 }

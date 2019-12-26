@@ -48,15 +48,19 @@ vertical-align: middle!important;
 				<td>${s.studentCollege}</td>
 				<td>${s.studentProfessional}</td>
 				<td>
-					<a href="findChecksByStudentId.action?student.studentId=${s.studentId}&clazz.clazzId=${s.clazz.clazzId}" class="btn btn-info ">查看考勤</a>
-					<a href="findAllCheckintype.action?student.studentId=${s.studentId}" class="btn btn-info ">添加考勤</a>
-					<a href="overUpdStudentView.action?student.studentId=${s.studentId}" class="btn btn-info ">修改信息</a>
-					<a href="overGetStudentByStudentId.action?student.studentId=${s.studentId}" class="btn btn-info ">转班</a>
+					<a href="findChecksByStudentId.action?student.studentId=${s.studentId}&clazz.clazzId=${s.clazz.clazzId}" class="btn btn-info btn-sm">查看考勤</a>
+					<a href="findAllCheckintype.action?student.studentId=${s.studentId}" class="btn btn-info btn-sm">添加考勤</a>
+					<a href="overUpdStudentView.action?student.studentId=${s.studentId}" class="btn btn-info btn-sm">修改信息</a>
+					<a href="overGetStudentByStudentId.action?student.studentId=${s.studentId}" class="btn btn-info btn-sm">转班</a>
+					<a href="overDeleteStudentByStudentId.action?student.studentId=${s.studentId}" class="btn btn-danger btn-sm">删除</a>
 				</td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<div style="width:90%;margin:20px auto;text-align: right;">
+		<a href="studentExcelWrite.action?clazz.clazzId=${clazz.clazzId }" class="btn btn-info " >导出学生信息表</a>
+	</div>
   <script type="text/javascript" src="Refer/js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="Refer/js/bootstrap.min.js"></script>
 </body>

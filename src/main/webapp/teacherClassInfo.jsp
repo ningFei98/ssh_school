@@ -22,7 +22,8 @@
 	<h3 style="text-align: center">学生信息</h3>
 	
 	<div style="width:1000px;margin:0px auto;font-size: large;">
-		<span>班级：${clazz.clazzName }</span>
+		<span>班级：${clazz.clazzName }</span>&nbsp;&nbsp;&nbsp;
+		<span class="glyphicon glyphicon-calendar"></span>
 		<span>阶段：${clazz.stage.stageName }第${clazz.stage.stageWeek }周</span>
 	</div>
 	<table class="table table-striped table-bordered table-hover table-condensed">
@@ -44,7 +45,6 @@
 		  		    <th>${stu.studentSex}</th>
 		  		    <th>${stu.studentPhone}</th>
 		  		    <th>${stu.studentEdu}</th>
-		  		    
 	  		    </tr>
   		    </c:forEach>
 		</tbody>

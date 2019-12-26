@@ -10,6 +10,7 @@ import com.woniu.pojo.Score;
 import com.woniu.pojo.Student;
 
 public interface IStudentService {
+	//overmanÄ£¿é=========================
 	List<Checkin> findChecksByStudentId(Integer studentId);
 	Student getStudentByStudentId(Integer studentId);
 	List<Checkintype> findAllCheckintype();
@@ -17,7 +18,7 @@ public interface IStudentService {
 	void overSaveStudent(Student student);
 	void overUpdStudentClazz(Student student);
 	void overUpdStudent(Student student);
-
+	void overDeleteStudentByStudentId(Integer studentId);
 	//stuÄ£¿é---------
 	Student findStu(int i);
 	Checkin findC(int i);

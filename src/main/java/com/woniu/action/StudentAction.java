@@ -1,13 +1,19 @@
 package com.woniu.action;
 
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -25,21 +31,22 @@ import com.woniu.pojo.Checkintype;
 import com.woniu.pojo.Clazz;
 import com.woniu.pojo.Score;
 import com.woniu.pojo.Student;
+import com.woniu.pojo.Teacher;
 import com.woniu.pojo.User;
 import com.woniu.povo.StudentCheckintype;
+import com.woniu.service.IClazzService;
 import com.woniu.service.IStudentService;
-import com.woniu.utils.ExcelUtil;
-
-import java.util.ArrayList;
-import java.util.Set;
-import com.woniu.pojo.Teacher;
 import com.woniu.util.ExcelUtils;
+import com.woniu.util.ExcelWriter;
+import com.woniu.utils.ExcelUtil;
+import com.woniu.utils.StudentExcelWriter;
 
-@SuppressWarnings("serial")
 @Controller
 public class StudentAction extends ActionSupport{
 	@Autowired
 	private IStudentService ss;
+	@Autowired
+	private IClazzService cs;
 	
 	private Student student;
 	private List<Checkin> checks;
@@ -221,6 +228,11 @@ public class StudentAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	
+	/**
+	 * 批量添加学生信息
+	 * @return
+	 */
 	public String overBatchAddStudentSave(){
 		//得到工作簿
 		Workbook wb = null;
@@ -255,8 +267,51 @@ public class StudentAction extends ActionSupport{
 		ac.put("clazz", clazz);
 		return SUCCESS;
 	}
+	/**
+	 * 导出学生信息excel
+	 * @return
+	 */
+	public String studentExcelWrite() {
+		List<Student> students = ss.findStuByClazz(clazz);
+		fileName = "学生信息表"+new SimpleDateFormat("yyMMddhhmmss").format(new Date())+".xlsx";
+	    //设置字符，防止乱码
+	    try {
+			fileName= new String(fileName.getBytes("UTF-8"),"ISO8859-1");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        Workbook workbook = StudentExcelWriter.exportData(students);;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+			workbook.write(output);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        byte[] ba = output.toByteArray();
+        excelFile = new ByteArrayInputStream(ba);
+        try {
+			output.flush();
+			if(output!=null) {
+				output.close();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return "exportExcel";
+	}
+	public String overDeleteStudentByStudentId(){
+		student = ss.getStudentByStudentId(student.getStudentId());
+		clazz = student.getClazz();
+		ss.overDeleteStudentByStudentId(student.getStudentId());
+		ActionContext ac = ActionContext.getContext();
+		ac.put("clazz", clazz);
+		return SUCCESS;
+	}
 	
-	//stu模块
+	//stu模块===========================================
 	private Student stu;
 	private Checkin cin;
 	private Score sc;
@@ -304,8 +359,37 @@ public class StudentAction extends ActionSupport{
 	private String scoreExcelFileName;
 	private List<Student> stuList;
 	private List<Checkin> checkinList;
+	private static final long serialVersionUID = 1L;
+	private InputStream excelFile;
+	private String fileName;
 	
 	
+	
+	public InputStream getExcelFile() {
+		return excelFile;
+	}
+
+
+	public void setExcelFile(InputStream excelFile) {
+		this.excelFile = excelFile;
+	}
+
+
+	public String getFileName() {
+		return fileName;
+	}
+
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 	public List<Checkin> getCheckinList() {
 		return checkinList;
 	}
@@ -428,5 +512,43 @@ public class StudentAction extends ActionSupport{
 		ss.updScore(score);
 		return "findClassScore";
 	}
+	public String ScoreExcelWrite() {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		User user = (User) session.get("loginUser");
+		Teacher teacher1 = user.getTeacher();
+		Set<Clazz> clazzsSet = teacher1.getClazzs();
+		for (Clazz clazz1 : clazzsSet) {
+			clazz = clazz1;
+		}
+		scores = ss.findScoreByClazz(clazz);
+		fileName = "学生成绩表"+new SimpleDateFormat("yyMMddhhmmss").format(new Date())+".xls";
+	    //设置字符，防止乱码
+	    try {
+			fileName= new String(fileName.getBytes("UTF-8"),"ISO8859-1");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        Workbook workbook = ExcelWriter.exportData(scores);;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+			workbook.write(output);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        byte[] ba = output.toByteArray();
+        excelFile = new ByteArrayInputStream(ba);
+        try {
+			output.flush();
+			output.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
+        return "exportExcel";
+	}
+	
 	
 }

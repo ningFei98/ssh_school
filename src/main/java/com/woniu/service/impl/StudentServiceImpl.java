@@ -34,6 +34,7 @@ public class StudentServiceImpl implements IStudentService {
 	@Autowired
 	IClazzDAO cd;
 
+	//overmanÄ£¿é===============================================
 	@Override
 	public Student getStudentByStudentId(Integer studentId) {
 		return sd.getStudentByStudentId(studentId);
@@ -101,6 +102,12 @@ public class StudentServiceImpl implements IStudentService {
 		student.setStudentGraduateTime(temp.getStudentGraduateTime());
 		sd.overUpdStudent(student);
 	}
+	
+	@Override
+	public void overDeleteStudentByStudentId(Integer studentId) {
+		sd.overDeleteStudentByStudentId(studentId);
+	}
+
 
 	//stuÄ£¿é-------------------------------------------------------
 	@Override
