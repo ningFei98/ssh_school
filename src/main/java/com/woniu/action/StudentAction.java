@@ -302,6 +302,10 @@ public class StudentAction extends ActionSupport{
 		}
         return "exportExcel";
 	}
+	/**
+	 * 删除学生信息（测试数据自用）
+	 * @return
+	 */
 	public String overDeleteStudentByStudentId(){
 		student = ss.getStudentByStudentId(student.getStudentId());
 		clazz = student.getClazz();
