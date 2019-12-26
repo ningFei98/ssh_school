@@ -6,7 +6,7 @@
             <column name="score_id"/>
             <generator class="identity"/>
         </id>
-        <many-to-one class="com.woniu.pojo.Student" embed-xml="true" fetch="select" insert="true" name="student" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="com.woniu.pojo.Student" embed-xml="true" fetch="select" insert="true" name="student" not-found="exception" optimistic-lock="true" unique="false" update="true" lazy="false">
             <column name="student_id"/>
         </many-to-one>
         <property generated="never" lazy="false" name="scoreNum" optimistic-lock="true" type="java.lang.Double" unique="false">

@@ -1,6 +1,7 @@
 package com.woniu.service.impl;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.woniu.dao.ICheckinDAO;
 import com.woniu.dao.IClazzDAO;
+import com.woniu.dao.IScoreDAO;
 import com.woniu.dao.IStudentDAO;
 import com.woniu.dao.IUserDAO;
 import com.woniu.pojo.Checkin;
@@ -99,7 +102,7 @@ public class StudentServiceImpl implements IStudentService {
 		sd.overUpdStudent(student);
 	}
 
-	//stu
+	//stuÄ£¿é-------------------------------------------------------
 	@Override
 	public Student findStu(int i) {
 		// TODO Auto-generated method stub
@@ -117,4 +120,74 @@ public class StudentServiceImpl implements IStudentService {
 		// TODO Auto-generated method stub
 		return sd.findS(i);
 	}
+
+	//teacherÄ£¿é---------------------------------------------------------
+	@Autowired
+	IScoreDAO scd;
+	@Autowired
+	ICheckinDAO ckd;
+
+	@Override
+	public List<Score> findScoreByClazz(Clazz obj) {
+		List<Score> scores = new ArrayList<Score>();
+		List<Student> list = sd.findAllByClazz(obj);
+		
+		for (Student student : list) {
+			List<Score> ScoresOneStu = scd.findByStu(student);
+			for (Score score : ScoresOneStu) {
+				score.setStudent(student);
+			
+				scores.add(score);
+			}
+		}
+		return scores;
+	}
+
+	@Override
+	public void saveScore(Score obj) {
+		// TODO Auto-generated method stub
+		Date date = new Date();
+		obj.setScoreDate(date);
+		scd.save(obj);
+	}
+
+	@Override
+	public void saveScores(List<Score> list) {
+		for (Score score : list) {
+			scd.save(score);
+		}
+	}
+
+	@Override
+	public List<Student> findStuByClazz(Clazz obj) {
+		List<Student> list = sd.findAllByClazz(obj);
+		return list;
+	}
+
+	@Override
+	public List<Checkin> findCheckinByClazz(Clazz obj) {
+		List<Checkin> chList = new ArrayList<Checkin>();
+		List<Student> list = sd.findAllByClazz(obj);
+		
+		for (Student student : list) {
+			Checkin CheckinOneStu = ckd.findByStu(student);
+			chList.add(CheckinOneStu);
+		}
+		return chList;
+	}
+
+	@Override
+	public void updScore(Score obj) {
+		// TODO Auto-generated method stub
+		scd.update(obj);
+	}
+
+	@Override
+	public Score findOneScore(Score obj) {
+		// TODO Auto-generated method stub
+		return scd.findByScoreId(obj);
+	}
+
+	
+
 }

@@ -34,7 +34,8 @@
 			<div id="top" class="col-lg-12">
 					<h1>蜗牛教务系统</h1>
 					<h5 style="text-align:right">
-						当前用户：${sessionScope.loginUser.userName}
+						<span class="glyphicon glyphicon-user"></span>当前用户：${sessionScope.loginUser.userName}
+						&nbsp;&nbsp;&nbsp;
 						<a href="exit.action">安全退出</a>
 					</h5>
 			</div>
@@ -55,9 +56,9 @@
 					    	<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 					      		<div class="panel-body">
 					        		<ul>
-							        	<li><a href="user.do" target="ifs">学员信息</a></li>
-							        	<li><a href="userUpdPwd.jsp" target="ifs">班级考勤</a></li>
-							        	<li><a href="#">成绩管理</a></li>
+							        	<li><a href="showClazzInfo.action" target="ifs">学员信息</a></li>
+							        	<li><a href="showClazzCheckin.action" target="ifs">班级考勤</a></li>
+							        	<li><a href="findScoreByClazz.action" target="ifs">成绩管理</a></li>
 					        		</ul>
 					      		</div>
 					   		</div>
@@ -73,7 +74,7 @@
 			
 			<div class="row">
 				<div id="bottom" class="col-lg-12">
-					<p>&copy;版权信息 当前在线人数：${applicationScope.online}</p>
+					<p>&copy;版权信息</p>
 				</div>
 			</div>
 			

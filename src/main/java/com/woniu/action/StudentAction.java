@@ -30,6 +30,11 @@ import com.woniu.povo.StudentCheckintype;
 import com.woniu.service.IStudentService;
 import com.woniu.utils.ExcelUtil;
 
+import java.util.ArrayList;
+import java.util.Set;
+import com.woniu.pojo.Teacher;
+import com.woniu.util.ExcelUtils;
+
 @SuppressWarnings("serial")
 @Controller
 public class StudentAction extends ActionSupport{
@@ -288,4 +293,140 @@ public class StudentAction extends ActionSupport{
 		sc=ss.findS(1);
 		return "seccess";
 	}
+
+
+	//teacherÄ£¿é---------------------------------------------------------
+	private List<Score> scores = new ArrayList<Score>();
+	private List<Clazz> clazzs = new ArrayList<Clazz>();
+	private Set<Student> students;
+	private Score score;
+	private File scoreExcel;
+	private String scoreExcelFileName;
+	private List<Student> stuList;
+	private List<Checkin> checkinList;
+	
+	
+	public List<Checkin> getCheckinList() {
+		return checkinList;
+	}
+	public void setCheckinList(List<Checkin> checkinList) {
+		this.checkinList = checkinList;
+	}
+	public List<Student> getStuList() {
+		return stuList;
+	}
+	public void setStuList(List<Student> stuList) {
+		this.stuList = stuList;
+	}
+	public File getScoreExcel() {
+		return scoreExcel;
+	}
+	public void setScoreExcel(File scoreExcel) {
+		this.scoreExcel = scoreExcel;
+	}
+	public String getScoreExcelFileName() {
+		return scoreExcelFileName;
+	}
+	public void setScoreExcelFileName(String scoreExcelFileName) {
+		this.scoreExcelFileName = scoreExcelFileName;
+	}
+
+	public Score getScore() {
+		return score;
+	}
+	public void setScore(Score score) {
+		this.score = score;
+	}
+	public Set<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
+
+
+
+	public List<Clazz> getClazzs() {
+		return clazzs;
+	}
+
+	public void setClazzs(List<Clazz> clazzs) {
+		this.clazzs = clazzs;
+	}
+
+	public List<Score> getScores() {
+		return scores;
+	}
+
+	public void setScores(List<Score> scores) {
+		scores = scores;
+	}
+
+	public String findScoreByClazz() {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		User user = (User) session.get("loginUser");
+		Teacher teacher1 = user.getTeacher();
+		Set<Clazz> clazzsSet = teacher1.getClazzs();
+		for (Clazz clazz1 : clazzsSet) {
+			clazz = clazz1;
+		}
+		scores = ss.findScoreByClazz(clazz);
+		return "score";
+	}
+	
+	public String findClazzStu() {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		User user = (User) session.get("loginUser");
+		Teacher teacher1 = user.getTeacher();
+		Set<Clazz> clazzsSet = teacher1.getClazzs();
+		for (Clazz clazz1 : clazzsSet) {
+			students = clazz1.getStudents();
+		}
+		return "scoreAdd";
+	}
+	public String saveScore() {
+		score.setStudent(student);
+		ss.saveScore(score);
+		return "findClassScore";
+	}
+	
+	public String ScoresAdd() {
+		List<Score> list = ExcelUtils.readExcel(scoreExcel,scoreExcelFileName);
+		ss.saveScores(list);
+		return "findClassScore";
+	}
+	public String showClazzInfo() {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		User user = (User) session.get("loginUser");
+		Teacher teacher1 = user.getTeacher();
+		Set<Clazz> clazzsSet = teacher1.getClazzs();
+		for (Clazz clazz1 : clazzsSet) {
+			clazz = clazz1;
+		}
+		stuList = ss.findStuByClazz(clazz);
+		return "showClazzInfo";
+	}
+	
+	public String showClazzCheckin() {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		User user = (User) session.get("loginUser");
+		Teacher teacher1 = user.getTeacher();
+		Set<Clazz> clazzsSet = teacher1.getClazzs();
+		for (Clazz clazz1 : clazzsSet) {
+			clazz = clazz1;
+		}
+		checkinList = ss.findCheckinByClazz(clazz);
+		System.out.println(checkinList.size()+"==============");
+		return "showClazzCheckin";
+	}
+	public String findOneScore() {
+		score = ss.findOneScore(score);
+		return "teacherUpdScoreUI";
+	}
+	public String updScore() {
+		score.setStudent(student);
+		ss.updScore(score);
+		return "findClassScore";
+	}
+	
 }

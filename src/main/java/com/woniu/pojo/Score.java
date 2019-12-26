@@ -50,6 +50,12 @@ public class Score implements java.io.Serializable {
 		return this.scoreDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Score [scoreId=" + scoreId + ", student=" + student + ", scoreNum=" + scoreNum + ", scoreDate="
+				+ scoreDate + "]";
+	}
+
 	public void setScoreDate(Date scoreDate) {
 		this.scoreDate = scoreDate;
 	}

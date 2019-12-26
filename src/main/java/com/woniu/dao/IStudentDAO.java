@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.woniu.pojo.Checkin;
 import com.woniu.pojo.Checkintype;
+import com.woniu.pojo.Clazz;
 import com.woniu.pojo.Relationship1;
 import com.woniu.pojo.Student;
 
@@ -27,4 +28,7 @@ public interface IStudentDAO {
 	Student findStu(int i);
 	Checkin findC(int i);
 	Score findS(int i);
+	//teacherÄ£¿é
+	List<Student> findAllByClazz(Clazz obj); 
+
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.woniu.dao.IStudentDAO;
 import com.woniu.pojo.Checkin;
 import com.woniu.pojo.Checkintype;
+import com.woniu.pojo.Clazz;
 import com.woniu.pojo.Relationship1;
 import com.woniu.pojo.Score;
 import com.woniu.pojo.Student;
@@ -108,4 +109,13 @@ public class StudentDAOImpl implements IStudentDAO {
 //		StudentDAOImpl s=new StudentDAOImpl();
 //		s.findStu(1);
 //	}
+
+	//teacherÄ£¿é---------------
+	@Override
+	public List<Student> findAllByClazz(Clazz clazz) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Student where clazz_id ="+clazz.getClazzId());
+		return query.list();
+	}
+	
+
 }

@@ -10,6 +10,8 @@ import java.util.Set;
  */
 public class Student implements java.io.Serializable {
 
+
+
 	private Integer studentId;
 	private Clazz clazz;
 	private User user;

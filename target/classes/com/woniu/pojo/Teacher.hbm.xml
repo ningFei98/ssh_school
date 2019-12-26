@@ -12,7 +12,7 @@
         <property generated="never" lazy="false" name="teacherName" optimistic-lock="true" type="string" unique="false">
             <column length="20" name="teacher_name"/>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="clazzs" optimistic-lock="true" sort="unsorted" table="clazz">
+        <set embed-xml="true" fetch="select" inverse="true" lazy="false" mutable="true" name="clazzs" optimistic-lock="true" sort="unsorted" table="clazz">
             <key on-delete="noaction">
                 <column name="teacher_id"/>
             </key>
