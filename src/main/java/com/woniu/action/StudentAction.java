@@ -34,16 +34,19 @@ import com.woniu.pojo.Student;
 import com.woniu.pojo.Teacher;
 import com.woniu.pojo.User;
 import com.woniu.povo.StudentCheckintype;
+import com.woniu.service.IClazzService;
 import com.woniu.service.IStudentService;
 import com.woniu.util.ExcelUtils;
 import com.woniu.util.ExcelWriter;
 import com.woniu.utils.ExcelUtil;
+import com.woniu.utils.StudentExcelWriter;
 
-@SuppressWarnings("serial")
 @Controller
 public class StudentAction extends ActionSupport{
 	@Autowired
 	private IStudentService ss;
+	@Autowired
+	private IClazzService cs;
 	
 	private Student student;
 	private List<Checkin> checks;
@@ -225,6 +228,11 @@ public class StudentAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String overBatchAddStudentSave(){
 		//得到工作簿
 		Workbook wb = null;
@@ -259,8 +267,43 @@ public class StudentAction extends ActionSupport{
 		ac.put("clazz", clazz);
 		return SUCCESS;
 	}
+	/**
+	 * 导出学生信息excel
+	 * @return
+	 */
+	public String studentExcelWrite() {
+		List<Student> students = ss.findStuByClazz(clazz);
+		fileName = "学生信息表"+new SimpleDateFormat("yyMMddhhmmss").format(new Date())+".xlsx";
+	    //设置字符，防止乱码
+	    try {
+			fileName= new String(fileName.getBytes("UTF-8"),"ISO8859-1");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        Workbook workbook = StudentExcelWriter.exportData(students);;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+			workbook.write(output);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        byte[] ba = output.toByteArray();
+        excelFile = new ByteArrayInputStream(ba);
+        try {
+			output.flush();
+			if(output!=null) {
+				output.close();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return "exportExcel";
+	}
 	
-	//stu模块
+	//stu模块===========================================
 	private Student stu;
 	private Checkin cin;
 	private Score sc;
@@ -498,5 +541,6 @@ public class StudentAction extends ActionSupport{
        
         return "exportExcel";
 	}
+	
 	
 }

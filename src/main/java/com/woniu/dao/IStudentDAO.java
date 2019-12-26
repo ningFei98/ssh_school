@@ -14,6 +14,7 @@ import com.woniu.pojo.Score;
 
 public interface IStudentDAO {
 	
+	//overmanÄ£¿é=========================
 	List<Checkin> findChecksByStudentId(Integer studentId);
 	Student getStudentByStudentId(Integer studentId);
 	List<Checkintype> findAllCheckintype();
@@ -23,12 +24,13 @@ public interface IStudentDAO {
 	void overSaveStudent(Relationship1 r1);
 	void overUpdStudentClazz(Student student);
 	void overUpdStudent(Student student);
+	void overDeleteStudentByStudentId(Integer studentId); 
 
 	//stuÄ£¿é
 	Student findStu(int i);
 	Checkin findC(int i);
 	Score findS(int i);
 	//teacherÄ£¿é
-	List<Student> findAllByClazz(Clazz obj); 
+	List<Student> findAllByClazz(Clazz obj);
 
 }

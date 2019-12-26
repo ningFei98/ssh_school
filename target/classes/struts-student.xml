@@ -57,6 +57,14 @@
 				<param name="actionName">findStudengtByClazzId</param>
 			</result>
 		</action>
+		<action name="studentExcelWrite" class="com.woniu.action.StudentAction" method="studentExcelWrite">
+			<result name="exportExcel" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>  
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">1024</param>
+                <param name="inputName">excelFile</param> 
+            </result>
+		</action>
 
 		<!-- stu模块============================================================== -->
 		<action name="getSt" class="com.woniu.action.StudentAction"
