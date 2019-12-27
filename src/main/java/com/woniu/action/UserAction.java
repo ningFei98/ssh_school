@@ -81,10 +81,10 @@ public class UserAction extends ActionSupport{
 	public void change(){
 		User u=(User) ServletActionContext.getRequest().getSession().getAttribute("loginUser");
 		String oldpwd=u.getUserPwd();	
-		System.out.println("¾ÉÃÜÂë"+oldpwd);
+//		System.out.println("¾ÉÃÜÂë"+oldpwd);
 		
 		String affpwd=ServletActionContext.getRequest().getParameter("oldPwd");
-		System.out.println("ĞÂÃÜÂë"+affpwd);
+//		System.out.println("ĞÂÃÜÂë"+affpwd);
 		PrintWriter out = null;
 		try {
 			out = ServletActionContext.getResponse().getWriter();

@@ -15,14 +15,15 @@
 				<input type="password" class="form-control"  required="required" name="userOldPwd" id="mima">
 			</div>
 			<div class="clo-md-3" id="showPwd" style="color: red"></div>
+		
 			
 		</div>
 		<div class="form-group">
 			<label class="col-md-5 col-sm-5 control-label">请输入新密码：</label>
 			<div class="col-md-4 " >
 			
-			   <input type="text" class="form-control" required="required" name="userNewPwd">
-			   
+			   <input type="text" class="form-control" required="required" name="userNewPwd">			   
+			   <label id="showd"></label>
 			</div>
 		</div>
 		<div class="form-group">
@@ -62,6 +63,7 @@ var tag=false;
 				alert("返回错误");
 			},
 			success:function(data){
+				
 				if(data=="true"){
 		    		
 		    		tag=true;
@@ -106,6 +108,27 @@ var tag=false;
 		return false;
 	}) 
 	
+	
+	  $("[name=userNewPwd]").keyup(function(){
+		 checkuname();
+	 })
+	 	function checkuname(){
+		 $("#showd").empty();
+		 var namel=$("[name=userNewPwd]").val().length;
+		 
+		 var b=$("<font></font>");
+		 b.attr("color","red");
+		 b.text("密码长度需要在3-12之间");
+		 var flag=false;
+		 if(namel>=3&&namel<12){
+			 flag=true;
+			 b.attr("color","green");
+			 b.text("该密码可以使用！");
+		 }		 
+		 $("#showd").append(b);
+		 return flag;
+		
+	 } 
 	
 </script>
 
