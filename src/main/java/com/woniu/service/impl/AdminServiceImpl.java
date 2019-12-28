@@ -163,7 +163,7 @@ public class AdminServiceImpl implements AdminService {
 	//获得测试班级数量
 	@Override
 	public int countCei() {
-		String str="select * from clazz where clazz_type='测试开发'";
+		String str="select * from clazz where clazz_type='测试班'";
 		List<Clazz> a=adminDao.findClazz(str);
 		int num=a.size();
 		return num;
@@ -171,7 +171,7 @@ public class AdminServiceImpl implements AdminService {
 	//开发班级数量
 	@Override
 	public int countJ() {
-		String str="select * from clazz where clazz_type='java开发'";
+		String str="select * from clazz where clazz_type='开发班'";
 		List<Clazz> a=adminDao.findClazz(str);
 		int num=a.size();
 		return num;
